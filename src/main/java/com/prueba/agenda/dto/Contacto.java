@@ -1,13 +1,11 @@
 package com.prueba.agenda.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
-@Table("contacto")
+@Table(name = "contacto")
 public class Contacto {
 
 	@Id
@@ -16,10 +14,19 @@ public class Contacto {
 	private String nombre;
 	private String apellido;
 	private String email;
-	private CatalogoTelefono telefono;
-	
-	
-	
+
+	@OneToMany(orphanRemoval=true)
+	@JoinColumn(name="id")
+	private List<CatalogoTelefono> catalogoTelefonos;
+
+
+
+	private String fecha_creacion;
+
+	private boolean status;
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -44,18 +51,29 @@ public class Contacto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public CatalogoTelefono getTelefono() {
-		return telefono;
-	}
-	public void setTelefono(CatalogoTelefono telefono) {
-		this.telefono = telefono;
-	}
+
 	public String getFecha_creacion() {
 		return fecha_creacion;
 	}
 	public void setFecha_creacion(String fecha_creacion) {
 		this.fecha_creacion = fecha_creacion;
 	}
-	private String fecha_creacion;
+
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public List<CatalogoTelefono> getTelefonos() {
+		return catalogoTelefonos;
+	}
+
+	public void setTelefonos(List<CatalogoTelefono> catalogoTelefonos) {
+		this.catalogoTelefonos = catalogoTelefonos;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 }

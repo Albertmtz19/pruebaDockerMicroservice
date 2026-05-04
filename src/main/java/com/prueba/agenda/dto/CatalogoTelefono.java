@@ -1,13 +1,9 @@
 package com.prueba.agenda.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table("catalogotelefono")
+@Table(name = "catalogotelefono")
 public class CatalogoTelefono {
 
 	@Id
@@ -15,7 +11,28 @@ public class CatalogoTelefono {
 	private Long id;
 	
 	private String tipo;
-	
+
+	@ManyToOne
+	private Contacto contacto;
+
+	private String descripcion;
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Contacto getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(Contacto contacto) {
+		this.contacto = contacto;
+	}
+
 	public Long getId() {
 		return id;
 	}
