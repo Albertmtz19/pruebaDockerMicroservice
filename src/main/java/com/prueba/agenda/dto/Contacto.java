@@ -15,7 +15,7 @@ public class Contacto {
 	private String apellido;
 	private String email;
 
-	@OneToMany(mappedBy = "contacto")
+	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CatalogoTelefono> catalogoTelefonos;
 
 	private String fecha_creacion;
