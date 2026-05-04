@@ -23,4 +23,13 @@ public class ContactoController {
         return contactoService.crear(c);
     }
 
+
+    @PostMapping("/{id}")
+    public void desactivar (@PathVariable Long id)  throws Exception{
+        contactoService.borrar(id);
+    }
+
+
+
+
 }
