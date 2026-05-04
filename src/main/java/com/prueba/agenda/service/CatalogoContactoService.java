@@ -53,7 +53,7 @@ public class CatalogoContactoService {
 
         public void eliminar (Long id) throws Exception {
 
-            Optional<CatalogoTelefono> optionalUser = repo.deleteById(id);
+            Optional<CatalogoTelefono> optionalUser = repo.findById(id);
 
             if (!optionalUser.isPresent()) {
                 // Manejar el error

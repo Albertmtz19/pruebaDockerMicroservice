@@ -13,6 +13,7 @@ public class CatalogoTelefono {
 	private String tipo;
 
 	@ManyToOne
+	@JoinColumn(name = "contacto_id")
 	private Contacto contacto;
 
 	private String descripcion;

@@ -15,11 +15,8 @@ public class Contacto {
 	private String apellido;
 	private String email;
 
-	@OneToMany(orphanRemoval=true)
-	@JoinColumn(name="id")
+	@OneToMany(mappedBy = "contacto")
 	private List<CatalogoTelefono> catalogoTelefonos;
-
-
 
 	private String fecha_creacion;
 
