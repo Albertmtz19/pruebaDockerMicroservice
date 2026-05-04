@@ -5,6 +5,7 @@ import com.prueba.agenda.repository.ContactoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -17,6 +18,11 @@ public class ContactoService {
     }
 
     public Contacto crear (Contacto t){
+
+        String fecha_creacion = String.valueOf( LocalDateTime.now());
+
+        t.setFecha_creacion(fecha_creacion);
+        t.setStatus(true);
         return contactoRepository.save(t);
     }
 }
