@@ -11,6 +11,9 @@ Ejecutar el comando `docker-compose up -d` para inicializar los contenedores
 
 # Servicios expuestos
 
+Estos servicios una  vez ejecutados se consumen mediante alguna herramienta postman, bruno o mediante o git bash por medio `curl -X POST http://localhost:8080/contacto/buscar/id`
+
+
 * Contacto
 
    Listar    http://localhost:8080/contacto - `GET`
