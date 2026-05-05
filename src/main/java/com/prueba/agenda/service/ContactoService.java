@@ -35,14 +35,26 @@ public class ContactoService {
 
     public void borrar (Long id) throws Exception {
 
+
         Optional<Contacto> optionalUser = contactoRepository.findById(id);
 
         if (!optionalUser.isPresent()) {
             // Manejar el error
             throw new Exception("No se encontro el usuario.");
+        }else {
+
+            Contacto ct = optionalUser.get();
+
+            ct.setStatus(false);
+
+            contactoRepository.save(ct);
+
         }
-        Contacto ct = new Contacto();
-        contactoRepository.desactivar(ct.getEmail());
+
+
+
+
+
     }
 
 
