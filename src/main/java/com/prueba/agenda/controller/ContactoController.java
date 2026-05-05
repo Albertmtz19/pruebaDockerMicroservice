@@ -75,6 +75,6 @@ public class ContactoController {
 
     @PostMapping("/buscar/{id}")
     public ResponseEntity<Object> buscar (@PathVariable Long id)  throws Exception{
-        response.generatedResponse(HttpStatus.FOUND,"Contacto Encontrado",contactoService.buscarxId(id));
+        return  response.generatedResponse(HttpStatus.FOUND,"Contacto Encontrado",contactoService.buscarxId(id));
     }
 }
