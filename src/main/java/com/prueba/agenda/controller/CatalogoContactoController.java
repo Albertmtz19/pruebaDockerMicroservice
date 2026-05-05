@@ -26,7 +26,7 @@ public class CatalogoContactoController {
     }
 
     @PutMapping("/{id}")
-    public CatalogoTelefono actualizar (@PathVariable Long id, CatalogoTelefono ct) throws Exception {
+    public CatalogoTelefono actualizar (@PathVariable Long id,@RequestBody CatalogoTelefono ct) throws Exception {
 
         return  serviceCatalogo.actualizaCatalogo(id,ct);
 
