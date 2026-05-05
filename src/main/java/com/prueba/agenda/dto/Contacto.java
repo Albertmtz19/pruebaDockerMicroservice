@@ -20,6 +20,8 @@ public class Contacto {
 
 	private String fecha_creacion;
 
+	private String fecha_actualizacion;
+
 	private boolean status;
 
 
@@ -73,4 +75,19 @@ public class Contacto {
 		this.status = status;
 	}
 
+	public List<CatalogoTelefono> getCatalogoTelefonos() {
+		return catalogoTelefonos;
+	}
+
+	public void setCatalogoTelefonos(List<CatalogoTelefono> catalogoTelefonos) {
+		this.catalogoTelefonos = catalogoTelefonos;
+	}
+
+	public String getFecha_actualizacion() {
+		return fecha_actualizacion;
+	}
+
+	public void setFecha_actualizacion(String fecha_actualizacion) {
+		this.fecha_actualizacion = fecha_actualizacion;
+	}
 }
