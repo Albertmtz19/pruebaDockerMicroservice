@@ -1,5 +1,6 @@
 package com.prueba.agenda.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,8 +17,9 @@ public class Contacto {
 	@Column(unique = true, nullable = false)
 	private String email;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CatalogoTelefono> catalogoTelefonos;
+	private List<CatalogoTelefono> telefonos;
 
 	private String fecha_creacion;
 
@@ -64,24 +66,8 @@ public class Contacto {
 		return status;
 	}
 
-	public List<CatalogoTelefono> getTelefonos() {
-		return catalogoTelefonos;
-	}
-
-	public void setTelefonos(List<CatalogoTelefono> catalogoTelefonos) {
-		this.catalogoTelefonos = catalogoTelefonos;
-	}
-
 	public void setStatus(boolean status) {
 		this.status = status;
-	}
-
-	public List<CatalogoTelefono> getCatalogoTelefonos() {
-		return catalogoTelefonos;
-	}
-
-	public void setCatalogoTelefonos(List<CatalogoTelefono> catalogoTelefonos) {
-		this.catalogoTelefonos = catalogoTelefonos;
 	}
 
 	public String getFecha_actualizacion() {
@@ -90,5 +76,13 @@ public class Contacto {
 
 	public void setFecha_actualizacion(String fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
+	}
+
+	public List<CatalogoTelefono> getTelefonos() {
+		return telefonos;
+	}
+
+	public void setTelefonos(List<CatalogoTelefono> telefonos) {
+		telefonos = telefonos;
 	}
 }

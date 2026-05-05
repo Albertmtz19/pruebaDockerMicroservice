@@ -1,5 +1,6 @@
 package com.prueba.agenda.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,7 +17,8 @@ public class CatalogoTelefono {
 	private String descripcion;
 
 	@ManyToOne
-	@JoinColumn(name = "contacto_id", referencedColumnName = "id", nullable = false)
+	@JsonBackReference
+	@JoinColumn(name = "contacto_id", nullable = false)
 	private Contacto contacto;
 
 

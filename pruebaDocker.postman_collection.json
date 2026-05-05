@@ -66,7 +66,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Alberto\",\n  \"apellido\": \"Martinez\",\n  \"email\" : \"jose1@example.com\"\n}",
+              "raw": "{\n  \"nombre\": \"Jose\",\n  \"apellido\": \"Martinez\",\n  \"email\" : \"jose@example.com\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -201,7 +201,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"nombre\": \"Fabiola\",\r\n  \"apellido\": \"Martinez\",\r\n  \"email\" : \"fabiola2@example.com\"\r\n}",
+              "raw": "{\r\n  \"nombre\": \"Gabriela\",\r\n  \"apellido\": \"Martinez Hernandez\",\r\n  \"email\" : \"gabriela@example.com\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -250,7 +250,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"tipo\": \"celular\",\r\n  \"descripcion\": \"5624680964\",\r\n  \"contacto\" : {\"id\":21}\r\n}",
+              "raw": "{\r\n  \"tipo\": \"casa\",\r\n  \"descripcion\": \"5624680964\",\r\n  \"contacto\" : {\"id\":1}\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -264,6 +264,33 @@
               ],
               "path": [
                 "catalogo_contactos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tipo\": \"trabajo\",\r\n  \"descripcion\": \"5624680964\",\r\n  \"contacto\" : {\"id\":1}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/catalogo_contactos/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "catalogo_contactos",
+                "1"
               ]
             }
           },
