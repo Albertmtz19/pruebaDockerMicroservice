@@ -2,7 +2,10 @@ package com.prueba.agenda.controller;
 
 import com.prueba.agenda.dto.Contacto;
 import com.prueba.agenda.service.ContactoService;
+import com.prueba.agenda.utils.PropsUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/contacto")
 public class ContactoController {
+
+    PropsUtility response = new PropsUtility();
     @Autowired
     private ContactoService contactoService;
 
@@ -19,8 +24,19 @@ public class ContactoController {
     }
 
     @PostMapping
-    public Contacto crear (@RequestBody Contacto c){
-        return contactoService.crear(c);
+    public ResponseEntity<Object> crear (@RequestBody Contacto c){
+
+
+        Contacto cr = contactoService.crear(c);
+
+        if (cr.getFecha_creacion() != null){
+
+            return response.generatedResponse(HttpStatus.OK,"El usuario ya existe",cr);
+        }else{
+
+            return response.generatedResponse(HttpStatus.CREATED,"Usuario creado",cr);
+        }
+
     }
 
 

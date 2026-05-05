@@ -12,10 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ContactoRepository extends JpaRepository<Contacto, Long> {
 
-    /*
-    @Query("select u from CONTACTO u where u.email = ?1")
-    Contacto findByEmailAddress(String email);
-*/
+    @Query("SELECT c FROM Contacto c WHERE c.email = ?1")
+    Contacto findByEmail(String email);
 /*
     @Modifying
     @Transactional

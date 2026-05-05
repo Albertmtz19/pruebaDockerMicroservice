@@ -21,14 +21,42 @@ public class ContactoService {
 
     public Contacto crear (Contacto t){
 
+        try {
+            Contacto c = contactoRepository.findByEmail(t.getEmail());
+
+
+            if(c.getEmail() == null) {
+
+                String fecha_creacion = String.valueOf(LocalDateTime.now());
+
+                t.setFecha_creacion(fecha_creacion);
+                t.setStatus(true);
+                return contactoRepository.save(t);
+            }else{
+                return c;
+            }
+        }catch (Exception e){
+            String fecha_creacion = String.valueOf(LocalDateTime.now());
+
+            t.setFecha_creacion(fecha_creacion);
+            t.setStatus(true);
+            contactoRepository.save(t);
+
+            Contacto contactocreacion = t;
+
+            System.out.println(contactocreacion.getId());
+
+            System.out.println(contactocreacion.getApellido());
+
+            System.out.println(contactocreacion.getEmail());
+            System.out.println(contactocreacion.getFecha_creacion());
 
 
 
-        String fecha_creacion = String.valueOf( LocalDateTime.now());
+            return contactocreacion;
 
-        t.setFecha_creacion(fecha_creacion);
-        t.setStatus(true);
-        return contactoRepository.save(t);
+        }
+
     }
 
 
