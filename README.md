@@ -32,3 +32,9 @@ Ejecutar el comando `docker-compose up -d` para inicializar los contenedores
 
 * catalogo
 
+   Listar http://localhost:8080/catalogo_contactos - `GET`
+
+  crear http://localhost:8080/catalogo_contactos  - `POST`
+
+  Actualizar http://localhost:8080/catalogo_contactos/id - `PUT`
+
