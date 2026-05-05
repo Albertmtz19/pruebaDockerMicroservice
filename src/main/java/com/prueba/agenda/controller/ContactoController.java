@@ -53,19 +53,9 @@ public class ContactoController {
 
         Contacto cr = contactoService.actualizar(id,c);
 
-        LocalDateTime fecha_creacion = LocalDateTime.now();
 
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = fecha_creacion.format(myFormatObj);
+            return response.generatedResponse(HttpStatus.FOUND,"Contacto actualizado",cr);
 
-        if (cr.getFecha_creacion().equals(formattedDate)){
-
-
-            return response.generatedResponse(HttpStatus.CREATED,"Usuario creado",cr);
-        }else{
-
-            return response.generatedResponse(HttpStatus.OK,"El usuario ya existe",cr);
-        }
 
     }
 
