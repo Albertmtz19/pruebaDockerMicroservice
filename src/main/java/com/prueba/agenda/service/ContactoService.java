@@ -95,20 +95,21 @@ public class ContactoService {
     public Contacto buscarxId (Long id) throws Exception {
         Optional<Contacto> optionalContacto = contactoRepository.findById(id);
 
-        if (optionalContacto.isPresent()){
+        if (!optionalContacto.isPresent()){
             throw new Exception("No se encontro contacto");
         }else {
-        return optionalContacto.get();
+            Contacto ct = optionalContacto.get();
+        return ct;
         }
     }
 
 
     public Contacto actualizar(Long id, Contacto c){
 
-        LocalDateTime fecha_creacion = LocalDateTime.now();
+        LocalDateTime fecha_actualizacion = LocalDateTime.now();
 
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = fecha_creacion.format(myFormatObj);
+        String formattedDate = fecha_actualizacion.format(myFormatObj);
 
         Optional<Contacto> contactoRecuperado = contactoRepository.findById(id);
 

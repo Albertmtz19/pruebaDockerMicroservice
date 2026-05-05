@@ -47,7 +47,7 @@ public class ContactoController {
 
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> actualizar (@PathVariable Long id, @RequestBody Contacto c){
 
 
@@ -71,7 +71,7 @@ public class ContactoController {
     }
 
     @PostMapping("/buscar/{id}")
-    public void buscar (@PathVariable Long id)  throws Exception{
-        contactoService.buscarxId(id);
+    public Contacto buscar (@PathVariable Long id)  throws Exception{
+        return contactoService.buscarxId(id);
     }
 }
