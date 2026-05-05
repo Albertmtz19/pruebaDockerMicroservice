@@ -29,6 +29,11 @@ public class ContactoController {
         contactoService.borrar(id);
     }
 
+    @PostMapping("/activar/{id}")
+    public void activar (@PathVariable Long id)  throws Exception{
+        contactoService.activar(id);
+    }
+
 
 
 

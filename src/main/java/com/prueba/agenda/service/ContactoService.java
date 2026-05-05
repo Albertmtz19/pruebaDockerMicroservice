@@ -51,6 +51,29 @@ public class ContactoService {
 
         }
 
+    }
+
+    public void activar (Long id) throws Exception {
+
+
+        Optional<Contacto> optionalUser = contactoRepository.findById(id);
+
+        if (!optionalUser.isPresent()) {
+            // Manejar el error
+            throw new Exception("No se encontro el usuario.");
+        }else {
+
+            Contacto ct = optionalUser.get();
+
+            ct.setStatus(true);
+
+            contactoRepository.save(ct);
+
+        }
+
+
+
+
 
 
 
