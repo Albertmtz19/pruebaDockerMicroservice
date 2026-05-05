@@ -22,25 +22,25 @@ public class ContactoService {
 
     public Contacto crear (Contacto t){
 
+        LocalDateTime fecha_creacion = LocalDateTime.now();
+
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = fecha_creacion.format(myFormatObj);
+
         try {
             Contacto c = contactoRepository.findByEmail(t.getEmail());
 
 
             if(c.getEmail() == null) {
 
-                String fecha_creacion = String.valueOf(LocalDateTime.now());
-
-                t.setFecha_creacion(fecha_creacion);
+                t.setFecha_creacion(formattedDate);
                 t.setStatus(true);
                 return contactoRepository.save(t);
             }else{
                 return c;
             }
         }catch (Exception e){
-            LocalDateTime fecha_creacion = LocalDateTime.now();
 
-            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-            String formattedDate = fecha_creacion.format(myFormatObj);
 
             t.setFecha_creacion(formattedDate);
             t.setStatus(true);
