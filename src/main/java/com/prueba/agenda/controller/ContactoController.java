@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -29,12 +31,18 @@ public class ContactoController {
 
         Contacto cr = contactoService.crear(c);
 
-        if (cr.getFecha_creacion() != null){
+        LocalDateTime fecha_creacion = LocalDateTime.now();
 
-            return response.generatedResponse(HttpStatus.OK,"El usuario ya existe",cr);
-        }else{
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = fecha_creacion.format(myFormatObj);
+
+        if (cr.getFecha_creacion().equals(formattedDate)){
+
 
             return response.generatedResponse(HttpStatus.CREATED,"Usuario creado",cr);
+        }else{
+
+            return response.generatedResponse(HttpStatus.OK,"El usuario ya existe",cr);
         }
 
     }

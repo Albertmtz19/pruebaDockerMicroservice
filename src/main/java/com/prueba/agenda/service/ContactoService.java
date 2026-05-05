@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,24 +37,18 @@ public class ContactoService {
                 return c;
             }
         }catch (Exception e){
-            String fecha_creacion = String.valueOf(LocalDateTime.now());
+            LocalDateTime fecha_creacion = LocalDateTime.now();
 
-            t.setFecha_creacion(fecha_creacion);
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String formattedDate = fecha_creacion.format(myFormatObj);
+
+            t.setFecha_creacion(formattedDate);
             t.setStatus(true);
             contactoRepository.save(t);
 
-            Contacto contactocreacion = t;
-
-            System.out.println(contactocreacion.getId());
-
-            System.out.println(contactocreacion.getApellido());
-
-            System.out.println(contactocreacion.getEmail());
-            System.out.println(contactocreacion.getFecha_creacion());
 
 
-
-            return contactocreacion;
+            return contactoRepository.save(t);
 
         }
 
