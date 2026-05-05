@@ -47,6 +47,28 @@ public class ContactoController {
 
     }
 
+    @PutMapping("/id")
+    public ResponseEntity<Object> actualizar (@PathVariable Long id, @RequestBody Contacto c){
+
+
+        Contacto cr = contactoService.actualizar(id,c);
+
+        LocalDateTime fecha_creacion = LocalDateTime.now();
+
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = fecha_creacion.format(myFormatObj);
+
+        if (cr.getFecha_creacion().equals(formattedDate)){
+
+
+            return response.generatedResponse(HttpStatus.CREATED,"Usuario creado",cr);
+        }else{
+
+            return response.generatedResponse(HttpStatus.OK,"El usuario ya existe",cr);
+        }
+
+    }
+
 
     @PostMapping("/{id}")
     public void desactivar (@PathVariable Long id)  throws Exception{
@@ -58,7 +80,8 @@ public class ContactoController {
         contactoService.activar(id);
     }
 
-
-
-
+    @PostMapping("/buscar/{id}")
+    public void buscar (@PathVariable Long id)  throws Exception{
+        contactoService.buscarxId(id);
+    }
 }

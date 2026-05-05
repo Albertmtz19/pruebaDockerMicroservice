@@ -77,12 +77,9 @@ public class ContactoService {
     }
 
     public void activar (Long id) throws Exception {
-
-
         Optional<Contacto> optionalUser = contactoRepository.findById(id);
 
         if (!optionalUser.isPresent()) {
-            // Manejar el error
             throw new Exception("No se encontro el usuario.");
         }else {
 
@@ -93,14 +90,37 @@ public class ContactoService {
             contactoRepository.save(ct);
 
         }
+    }
+
+    public Contacto buscarxId (Long id) throws Exception {
+        Optional<Contacto> optionalContacto = contactoRepository.findById(id);
+
+        if (optionalContacto.isPresent()){
+            throw new Exception("No se encontro contacto");
+        }else {
+        return optionalContacto.get();
+        }
+    }
+
+
+    public Contacto actualizar(Long id, Contacto c){
+
+        LocalDateTime fecha_creacion = LocalDateTime.now();
+
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = fecha_creacion.format(myFormatObj);
+
+        Optional<Contacto> contactoRecuperado = contactoRepository.findById(id);
+
+        contactoRecuperado.get().setNombre(c.getNombre());
+        contactoRecuperado.get().setApellido(c.getApellido());
+        contactoRecuperado.get().setEmail(c.getEmail());
+        contactoRecuperado.get().setStatus(c.isStatus());
+        contactoRecuperado.get().setFecha_actualizacion(formattedDate);
 
 
 
-
-
-
-
-
+        return contactoRepository.save(contactoRecuperado.get());
     }
 
 
