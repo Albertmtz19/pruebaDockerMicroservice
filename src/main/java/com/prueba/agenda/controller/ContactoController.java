@@ -16,13 +16,14 @@ import java.util.List;
 @RequestMapping("/contacto")
 public class ContactoController {
 
-    PropsUtility response = new PropsUtility();
+    public PropsUtility response = new PropsUtility();
     @Autowired
     private ContactoService contactoService;
 
     @GetMapping
-    public List<Contacto> listar (){
-        return contactoService.listar();
+    public ResponseEntity<Object> listar (){
+
+        return response.generatedResponse(HttpStatus.OK,"Lista de usuarios",contactoService.listar());
     }
 
     @PostMapping
@@ -54,24 +55,26 @@ public class ContactoController {
         Contacto cr = contactoService.actualizar(id,c);
 
 
-            return response.generatedResponse(HttpStatus.FOUND,"Contacto actualizado",cr);
+            return response.generatedResponse(HttpStatus.OK,"Contacto actualizado",cr);
 
 
     }
 
 
     @PostMapping("/{id}")
-    public void desactivar (@PathVariable Long id)  throws Exception{
+    public ResponseEntity<Object> desactivar (@PathVariable Long id)  throws Exception{
         contactoService.borrar(id);
+        return response.generatedResponse(HttpStatus.OK,"Contacto Desactivado",contactoService.borrar(id));
     }
 
     @PostMapping("/activar/{id}")
-    public void activar (@PathVariable Long id)  throws Exception{
-        contactoService.activar(id);
+    public ResponseEntity<Object> activar (@PathVariable Long id)  throws Exception{
+
+        return response.generatedResponse(HttpStatus.OK,"Contacto Reactivado",contactoService.activar(id));
     }
 
     @PostMapping("/buscar/{id}")
-    public Contacto buscar (@PathVariable Long id)  throws Exception{
-        return contactoService.buscarxId(id);
+    public ResponseEntity<Object> buscar (@PathVariable Long id)  throws Exception{
+        response.generatedResponse(HttpStatus.FOUND,"Contacto Encontrado",contactoService.buscarxId(id));
     }
 }

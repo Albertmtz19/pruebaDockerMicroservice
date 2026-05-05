@@ -56,7 +56,7 @@ public class ContactoService {
 
 
 
-    public void borrar (Long id) throws Exception {
+    public Contacto borrar (Long id) throws Exception {
 
 
         Optional<Contacto> optionalUser = contactoRepository.findById(id);
@@ -70,13 +70,13 @@ public class ContactoService {
 
             ct.setStatus(false);
 
-            contactoRepository.save(ct);
+           return contactoRepository.save(ct);
 
         }
 
     }
 
-    public void activar (Long id) throws Exception {
+    public Contacto activar (Long id) throws Exception {
         Optional<Contacto> optionalUser = contactoRepository.findById(id);
 
         if (!optionalUser.isPresent()) {
@@ -87,7 +87,7 @@ public class ContactoService {
 
             ct.setStatus(true);
 
-            contactoRepository.save(ct);
+            return contactoRepository.save(ct);
 
         }
     }
