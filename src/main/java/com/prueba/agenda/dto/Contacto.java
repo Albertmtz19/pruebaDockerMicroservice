@@ -13,6 +13,7 @@ public class Contacto {
 	private Long id;
 	private String nombre;
 	private String apellido;
+	@Column(unique = true, nullable = false)
 	private String email;
 
 	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, orphanRemoval = true)
