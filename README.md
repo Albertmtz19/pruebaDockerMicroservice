@@ -1,5 +1,5 @@
 # Paso 1
-Ejecutar el comando `mvn clean install` para poder obtener el jar de proyecto
+Ejecutar el comando `mvn clean install` para poder obtener el jar de proyecto considerar que el proyecto esta con compilado con jdk21 y mvn 3.8.1 asi que hay que ambientar su equipo local
 
 # Paso 2
 Ejecutar el comando `docker build -t agenda .` para poder empaquetar el proyecto
